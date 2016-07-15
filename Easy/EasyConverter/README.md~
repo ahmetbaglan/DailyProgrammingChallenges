@@ -9,16 +9,12 @@ Examples of valid units are:
 
     d for degrees of a circle
     r for radians
-
 -------------OUTPUT----------------
 You must output the given input value, in the unit specified. It must be followed by the unit letter. You may round to a whole number, or to a few decimal places.
 
-
 ------------INPUT_EXAMPLE----------
-
-	3.1416rd
-	90dr
+3.1416rd
+90dr
 ------------OUTPUT_EXAMPLE---------
-
-	180d
-	1.57r
+180d
+1.57r
