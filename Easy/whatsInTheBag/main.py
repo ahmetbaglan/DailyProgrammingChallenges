@@ -8,27 +8,29 @@ numIn = 20
 
 score = 0
 while(True):
+
     print "your score:",score
     letters = raw_input("please enter: ")
 
-    if(letters == "new"):
+    if(letters == "new"):#If user enters 'new' just start over
         setLetter = setLetterOrigin.copy()
         score = 0
+        continue
 
-    if(len(letters)> numIn):
+    if(len(letters)> numIn):#if the input is too long just do not accept
         print "too much letter"
         continue
     else:
         for l in letters:
-            if( (l not in setLetter) or setLetter[l][0]<=0 ):
+            if( (l not in setLetter) or setLetter[l][0]<=0 ): #if the letter is in the set
                 print "not possible since not enough " + l
                 break
             else:
-                setLetter[l] = (setLetter[l][0] - 1, setLetter[l][1])
-                score += setLetter[l][1]
-        else:
+                setLetter[l] = (setLetter[l][0] - 1, setLetter[l][1])#update the dect
+                score += setLetter[l][1]#update score
+        else:#if l is not in the set below code wont be processed
             out = {}
-            for i in setLetter.keys():
+            for i in setLetter.keys():#compute an output dictionary
                 if(setLetter[i][0] in out):
                     out[setLetter[i][0]] = out[setLetter[i][0]] + (i,)
                 else:
@@ -41,4 +43,4 @@ while(True):
                 s = ""
                 for k in sorted(out[i]):
                     s += (k + ", ")
-                print str(i) + " : " + s
+                print str(i) + " : " + s#print output
