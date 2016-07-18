@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+import random
 
 
 
@@ -13,6 +14,8 @@ lines = table.find_all('tr')
 my_dict = {}
 a = []
 nowLetter = ''
+
+
 for l in lines:
     if(l.get("class") == ["letter_separator"]):
         a = l.find_all('td')
@@ -24,10 +27,20 @@ for l in lines:
         if(len(a) == 4):
             my_dict[nowLetter].append(a[1].text)
 
-a = raw_input("lol")
-b = ""
-for i in a:
-    b = b + my_dict[i][0]
 
-print b
+def twistIt(d, text):
+    b = ""
+    for i in a:
+        b = b + d[i][random.randint(0, len(d[i]))]
+    return  b
+
+def deTwistIt(d, text):## CHANGE
+    # for i in d.values():
+    #     for t in text:
+    #         if t in i:
+    pass
+
+a = raw_input("lol")
+
+print twistIt(my_dict, a)
 
