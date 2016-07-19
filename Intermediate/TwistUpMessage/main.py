@@ -11,7 +11,7 @@ req.status_code
 soup = BeautifulSoup(req.text,'html.parser')
 table = soup.find('table')
 lines = table.find_all('tr')
-my_dict = {}
+my_dict = {" ": " "}
 a = []
 nowLetter = ''
 
@@ -31,16 +31,26 @@ for l in lines:
 def twistIt(d, text):
     b = ""
     for i in a:
-        b = b + d[i][random.randint(0, len(d[i]))]
+        b = b + d[i][random.randint(0, len(d[i])-1)]
     return  b
 
+def findTheKey(d,v):#NOT VERY SURE IF THIS WILL ALWAYS WORK
+    a = list(d.keys())
+    b = list(d.values())
+    for l in b:
+        if v in l:
+            return a[b.index(l)]
+    return None
+
 def deTwistIt(d, text):## CHANGE
-    # for i in d.values():
-    #     for t in text:
-    #         if t in i:
-    pass
+    b = ""
+    for  t in text:
+        r = findTheKey(d,t)
+        if(r != None):
+            b+=r
+    return b
 
 a = raw_input("lol")
 
-print twistIt(my_dict, a)
+print deTwistIt(my_dict,twistIt(my_dict, a))
 
